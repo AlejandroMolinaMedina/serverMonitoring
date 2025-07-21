@@ -1,0 +1,6 @@
+nginx-prometheus-exporter:
+  container_name: exporter
+  ports:
+    - 9113:9113
+  image: nginx/nginx-prometheus-exporter:latest
+  command: -nginx.scrape-uri http://10.10.5.202/status

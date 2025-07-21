@@ -1,0 +1,11 @@
+groups:
+- name: nginx_alerts
+  rules:
+  - alert: HighRequestRate
+    expr: sum(rate(nginx_http_requests_total[1m])) > 100
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Alerta: Alto tráfico en Nginx"
+      description: "La tasa de solicitudes ha superado 100 por segundo durante más de 5 minutos."
