@@ -1,6 +1,21 @@
 scrape_configs:
   - job_name: 'nginx'
     static_configs:
-            - targets: ['172.17.0.1:9113']
+            - targets: ['<ip_exporters>:9113']
+
+  - job_name: 'node'
+    static_configs:
+      - targets: ['<ip_exporters>:9100']
+  - job_name: 'nginxBitnami'
+    static_configs:
+      - targets: ['<ip_exporters>:9113']
+  - job_name: 'request'
+    static_configs:
+      - targets: ['<ip_exporters>:8000']
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - "<ip_exporters>:9093" # si usas Docker Compose
 rule_files:
-  - "nginx_alerts.yml"
+  - "alerts.yml"
