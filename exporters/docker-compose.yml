@@ -3,4 +3,25 @@ nginx-prometheus-exporter:
   ports:
     - 9113:9113
   image: nginx/nginx-prometheus-exporter:latest
-  command: -nginx.scrape-uri http://10.10.5.202/status
+  command: -nginx.scrape-uri http://<ip_delServidor>/status
+
+
+node-exporter:
+  container_name: node_exporter
+  ports:
+    - 9100:9100
+  restart: unless-stopped
+  image: prom/node-exporter:latest
+
+
+
+count_request_nginx:
+  container_name: exporte_request
+  ports:
+    - 8000:8000
+  stdin_open: true
+  tty: true
+  volumes:
+    - <rutaDelLog>:/app/access.log
+  image: ghcr.io/alejandromolinamedina/count_request_nginx:latest
+  command: sh -c "python3 requestPerMinute.py --log /app/access.log"
