@@ -5,3 +5,10 @@ prometheus:
   volumes:
     - ./:/etc/prometheus
   image: prom/prometheus
+
+alertmanager:
+   image: prom/alertmanager
+   ports:
+     - 9093:9093
+   volumes:
+     - ./:/etc/alertmanager
