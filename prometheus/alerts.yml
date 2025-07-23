@@ -9,3 +9,12 @@ groups:
     annotations:
       summary: "Alerta: Alto tráfico en Nginx"
       description: "La tasa de solicitudes ha superado 100 por segundo durante más de 5 minutos."
+
+  - alert: HighNginxTraffic
+    expr: nginx_traffic_requests > 1
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Tráfico alto en Nginx"
+      description: "El tráfico en Nginx es mayor a 100 solicitudes por minuto en {{ $labels.instance }}"
