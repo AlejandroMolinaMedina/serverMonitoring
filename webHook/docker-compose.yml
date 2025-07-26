@@ -1,0 +1,10 @@
+flask:
+  image: python:3.13
+  container_name: webhook-flask
+  ports:
+    - "9000:9000"
+  volumes:
+    - ./:/app:z
+  working_dir: /app
+  user: "0:0" 
+  command: sh -c "pip install -r requirements.txt && python3 app.py"
