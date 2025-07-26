@@ -1,5 +1,5 @@
 flask:
-  image: python:3.13
+  image: python:3.13-slim
   container_name: webhook-flask
   ports:
     - "9000:9000"
