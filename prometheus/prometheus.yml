@@ -1,17 +1,24 @@
 scrape_configs:
   - job_name: 'nginx'
     static_configs:
-            - targets: ['<ip_exporters>:9113']
-
+      - targets: ['<ip_exporters>:9113']
+	labels:
+          ip: '<Ip_privada> (Identificador)'
   - job_name: 'node'
     static_configs:
       - targets: ['<ip_exporters>:9100']
+      	labels:
+          ip: '<Ip_privada> (Identificador)'
   - job_name: 'nginxBitnami'
     static_configs:
       - targets: ['<ip_exporters>:9113']
-  - job_name: 'request'
+	labels:
+          ip: '<Ip_privada> (Identificador)'
+- job_name: 'request'
     static_configs:
       - targets: ['<ip_exporters>:8000']
+	labels:
+          ip: '<Ip_privada> (Identificador)'
 alerting:
   alertmanagers:
     - static_configs:
