@@ -2,7 +2,7 @@ flask:
   image: python:3.13-slim
   container_name: webhook-flask
   ports:
-    - "9000:9000"
+    - "5000:5000"
   volumes:
     - ./:/app:z
   working_dir: /app
