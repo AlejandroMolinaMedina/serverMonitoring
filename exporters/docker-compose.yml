@@ -2,6 +2,7 @@ nginx-prometheus-exporter:
   container_name: exporter
   ports:
     - 9113:9113
+  restart: unless-stopped
   image: nginx/nginx-prometheus-exporter:latest
   command: -nginx.scrape-uri http://<ip_delServidor>/status
 
@@ -19,6 +20,7 @@ count_request_nginx:
   container_name: exporte_request
   ports:
     - 8000:8000
+  restart: unless-stopped
   stdin_open: true
   tty: true
   volumes:
